@@ -1,0 +1,52 @@
+Student Name: Yasir Hassan
+04/02/2020
+Project 1 Result Discussion
+
+This discussion is about Decision Tree and Random Forest, with parameters optimization, 
+to evaluate the performance of the classification to the database BDParkinson_Prediction.csv.
+
+1) For a single decision tree,
+The training set is 100% because the leaves are pure.
+The tree was grown deep enough that it could perfectly memorize all the labels on the training data. 
+The test set accuracy 97% accuracy.
+
+Applying pre-pruning to the tree, which will stop developing
+the tree before it perfectly fits to the training data. 
+This will stop building the tree after a certain depth
+has been reached, which is 4, level. And then fit the tree clf with training data
+
+For the single decision tree, I set max_depth = 4, meaning only
+four consecutive questions can be asked. 
+Limiting the depth of the tree decreases overfitting. 
+This lead to a lower accuracy on the training set.
+
+Visualization of the decision tree built:
+I read the file and visualize it, using the graphviz module
+
+For parameter Optimization, to Evaluate the Performance of a single decision tree,
+I use GridsearchCV classifier for finding the best parameters.
+The best parameters I found were criterion is gini and  max_depth is 4
+Find the accuracy score, for the test set, after parameter Optimization, is 97%. It is the same as the initial
+score because the initial score was very high as 97%.
+
+2) Then, I built a random forest consisting of 10 trees on the data.
+The choice of 10 trees is Arbitrary, as this happens before using
+GridSearchCV classifier.
+
+The trees that are built as part of the random forest are stored in the estimator_ attribute. 
+The random forest gave an accuracy of 97%,
+without tuning any parameters. I could adjust the max_features setting, 
+or apply pre-pruning as for the single decision tree.
+Also, the default parameters of the random forest already work quite well.
+
+Trees in random forests tend to be deeper than decision trees. 
+Therefore, to summarize the prediction making in a visual way to nonexperts, 
+a single decision tree might be a better choice. 
+While building random forests on large datasets might be time consuming, 
+it can be parallelized across multiple CPU.
+
+I used GridSearchCV classifier for arameter optimization, to evaluate the performance of 
+a random forest (finding the best parameters), after fitting the grid with training data set.
+
+So, Grid Search best parameters for th random forest were: criterion is gini and n_estimators = 100.
+The accuracy score, for the random forest, with best parameters was 97%.
